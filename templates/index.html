@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block heading %}
+     <h1>WELCOME TO <br> AUTO SUPPLY'S ORDERING AND INVENTORY SYSTEM!<h1>
+{% endblock %}
+
+{% block linkOf %}
+
+    <a href="{{ url_for('login') }}" >LOGIN</a>
+    <a href="{{ url_for('register') }}" >REGISTER</a>
+
+{% endblock %}

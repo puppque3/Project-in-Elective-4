@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <style>
+
+    a{
+      color:white;
+      font-size:20px;
+      padding: 10px;
+      font-family:"Lato";
+    }
+    h1{
+      color:white;
+      font-size:40px;
+      padding: 10px;
+      font-family:"Lato";
+
+    }
+    body{
+      background-color: maroon;
+      color:white;
+      font-family:"Lato";
+      font-size:20px;
+    }
+
+    input[type=text], input[type=password]{
+    width: 20%;
+    padding:5px;
+    border-color: white;
+    font-family:"Lato";
+      }
+
+    input[type=submit], input[type=reset]{
+    width:10px
+    background-color: white;
+    color: black;
+    font-size:20px;
+      }
+    </style>
+      <title>Activity2</title>
+  </head>
+  <body>
+    <h3><LEFT>{% block heading2 %}
+    {% endblock %}</h3>
+    <h2><left>{% block linkOf %}{% endblock %}</h2>
+    <h3><CENTER>{% block heading %}{% endblock %}</CENTER></h3>
+    <h3><RIGHT>{% block heading1 %}{% endblock %}</h3>
+
+
+
+    <CENTER>{% block body %}
+    {% endblock %}</CENTER>
+
+
+
+
+  </body>
+</html>
