@@ -1,0 +1,23 @@
+{% extends "layoutAdmin.html" %}
+{% block heading %}
+ADMIN PAGE
+{% endblock%}
+{% block body %}
+
+      <form method= 'post' action = "{{ url_for('admin') }}">
+        <br>
+          <div id = "sidebar">
+        <ul>
+        <li><a href="#">HOME</a></li>
+        <li id= "Account"><a href="#">ACCOUNT</a></li>
+        <li id= "Inventory"><a href="#">INVENTORY</a></li>
+        <li id= "Activity"><a href="#">ACTIVITY LOG</a></li>
+        <li id= "Cashier"><a href="#"> CASHIER SALES</a></li>
+        <li id= "Total"><a href="#">TOTAL SALES</a></li>
+        </ul>
+    </div>
+
+
+
+      </form>
+{% endblock%}

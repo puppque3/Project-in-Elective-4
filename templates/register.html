@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+
+{% block heading2 %}
+<a href="{{ url_for('index') }}" >HOME</a>
+{% endblock %}
+
+{% block heading %}
+    REGISTRATION FORM
+{% endblock %}
+
+
+{% block body %}
+
+    <form method="POST" action = "{{ url_for('register') }}  ">
+
+      {{form.csrf_token}}
+      {{form.id.label}}
+      <br>
+      {{form.id}}
+      <br>
+      <ul>
+      {% for error in form.id.errors %}
+        <li style="color.red;">{{ error }}</li>
+      {% endfor %}
+      </ul>
+      {{form.name.label}}
+      <br>
+      {{form.name}}
+      <br>
+      <ul>
+      {% for error in form.name.errors %}
+        <li style="color.red;">{{ error }}</li>
+      {% endfor %}
+      </ul>
+      {{form.address.label}}
+      <br>
+      {{form.address}}
+      <br>
+      <ul>
+          {% for error in form.address.errors %}
+              <li style="color:red;">{{ error }}</li>
+          {% endfor %}
+      </ul>
+      {{form.contact.label}}
+      <br>
+      {{form.contact}}
+      <br>
+      <ul>
+          {% for error in form.contact.errors %}
+              <li style="color:red;">{{ error }}</li>
+          {% endfor %}
+      </ul>
+      {{form.username.label}}
+      <br>
+      {{form.username}}
+      <br>
+      <ul>
+      {% for error in form.name.errors %}
+        <li style="color.red;">{{ error }}</li>
+      {% endfor %}
+      </ul>
+      {{form.password.label}}
+      <br>
+      {{form.password}}
+      <br>
+      <ul>
+      {% for error in form.password.errors %}
+        <li style="color.red;">{{ error }}</li>
+      {% endfor %}
+      </ul>
+      {{form.cpassword.label}}
+      <br>
+      {{form.cpassword}}
+      <ul>
+      {% for error in form.cpassword.errors %}
+        <li style="color.red;">{{ error }}</li>
+      {% endfor %}
+      </ul>
+      <br>
+      <input type="submit" name="SUBMIT" value="SUBMIT" >
+    </form>
+
+
+{% endblock %}
+</html>

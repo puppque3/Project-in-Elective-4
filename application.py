@@ -2,22 +2,19 @@ from flask import  Flask, render_template
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField
 from wtforms.validators import InputRequired, Length, Email, DataRequired
-from flask_sqlalchemy import SQLAlchemy
-from models import *
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "aaron"
-app.config["SQLALCHEMY_DATABASE_URI"] = f"postgresql://postgres:aaron@localhost/postgres"
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-db.init_app(app)
 
 class LoginForm(FlaskForm):
     username = StringField("USERNAME: ", validators=[InputRequired("This is required!")])
     password = PasswordField("PASSWORD: ", validators=[InputRequired()])
 
 class Register(FlaskForm):
-    name = StringField("NAME: ", validators=[InputRequired()])
-    email = StringField("EMAIL ADDRESS: ", validators=[DataRequired(), Email()])
+    id = StringField("CASHIER ID: ", validators=[InputRequired()])
+    name = StringField("CASHIER NAME: ", validators=[InputRequired()])
+    address = StringField("ADDRESS: ", validators=[DataRequired(), Email()])
+    contact = StringField("CONTACT NUMBER: ", validators=[DataRequired(), Email()])
     username = StringField("USERNAME: ", validators=[InputRequired()])
     password = PasswordField("PASSWORD: ", validators=[InputRequired()])
     cpassword = PasswordField("CONFIRM PASSWORD: ", validators=[InputRequired()])
@@ -68,7 +65,11 @@ def register():
         return render_template ("registerS.html")
 
     return render_template("register.html", form = register)
-
+    
+@app.route("/admin", methods = ['GET', 'POST'])
+def admin():
+    #admin = admin()
+    return render_template("admin.html")
 
 if __name__ == '__main__':
     app.run(debug = True)
