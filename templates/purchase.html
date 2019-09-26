@@ -5,74 +5,66 @@
 {% endblock %}
 
 {% block heading %}
-    REGISTRATION FORM
+    PURCHASE FROM SUPPLIER FORM
 {% endblock %}
 
 
 {% block body %}
 
-    <form method="POST" action = "{{ url_for('register') }}  ">
+    <form method="POST" action = "{{ url_for('purchase') }}  ">
 
       {{form.csrf_token}}
-      {{form.id.label}}
+      {{form.purchase_id.label}}
       <br>
-      {{form.id}}
+      {{form.purchase_id}}
       <br>
       <ul>
-      {% for error in form.id.errors %}
+      {% for error in form.purchase_id.errors %}
         <li style="color.red;">{{ error }}</li>
       {% endfor %}
       </ul>
-      {{form.name.label}}
+      {{form.supplier_id.label}}
       <br>
-      {{form.name}}
+      {{form.supplier_id}}
       <br>
       <ul>
-      {% for error in form.name.errors %}
+      {% for error in form.supplier_id.errors %}
         <li style="color.red;">{{ error }}</li>
       {% endfor %}
       </ul>
-      {{form.address.label}}
+      {{form.item_code.label}}
       <br>
-      {{form.address}}
+      {{form.item_code}}
       <br>
       <ul>
-          {% for error in form.address.errors %}
+          {% for error in form.item_code.errors %}
               <li style="color:red;">{{ error }}</li>
           {% endfor %}
       </ul>
-      {{form.contact.label}}
+      {{form.item_name.label}}
       <br>
-      {{form.contact}}
+      {{form.item_name}}
       <br>
       <ul>
-          {% for error in form.contact.errors %}
+          {% for error in form.item_name.errors %}
               <li style="color:red;">{{ error }}</li>
           {% endfor %}
       </ul>
-      {{form.username.label}}
+      {{form.number.label}}
       <br>
-      {{form.username}}
+      {{form.number}}
       <br>
       <ul>
-      {% for error in form.username.errors %}
+      {% for error in form.number.errors %}
         <li style="color.red;">{{ error }}</li>
       {% endfor %}
       </ul>
-      {{form.password.label}}
+      {{form.date.label}}
       <br>
-      {{form.password}}
+      {{form.date}}
       <br>
       <ul>
-      {% for error in form.password.errors %}
-        <li style="color.red;">{{ error }}</li>
-      {% endfor %}
-      </ul>
-      {{form.cpassword.label}}
-      <br>
-      {{form.cpassword}}
-      <ul>
-      {% for error in form.cpassword.errors %}
+      {% for error in form.date.errors %}
         <li style="color.red;">{{ error }}</li>
       {% endfor %}
       </ul>

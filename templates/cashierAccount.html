@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div class ="CshAcc">
+<form>
+ <h1>CASHIER ACCOUNT</h1>
+ <input type = "submit" id = "addCsh" name = "Addbtn" value = "Add Cashier">
+ <table cellpadding = "0", cellspacing = "10", border ="1">
+ <tr>
+  <th>ID</th>
+ <th>Name</th>
+ <th>Address</th>
+ <th>Contact</th>
+ <th>Username</th>
+ <th>Password</th>
+ <th>Action</th>
+ </tr>
+ {% for cashier in cashierAccount %}
+ <tr>
+ <td style = "text-align: center, width:150px" >{{ cashier.Cashier_ID }}</td>
+ <td style = "text-align: center, width:150px">{{ cashier.Cashier_Name }}</td>
+ <td style = "text-align: center, width:150px">{{ cashier.Address }}</td>
+ <td style = "text-align: center, width:150px">{{ cashier.Contact_Number }}</td>
+ <td  style = "text-align: center, width:150px">{{ cashier.Username }}</td>
+ <td  style = "text-align: center, width:150px">{{ cashier.Password}}</td>
+ <td><input type = "submit" name = "btnedit" value = "Edit">
+  <input type = "submit" name = "btnDel" value = "Delete"></td>
+ </tr>
+ {% endfor %}
+</table>
+</form>
+</div>
+
+{% endblock %}

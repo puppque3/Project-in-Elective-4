@@ -5,21 +5,20 @@
 {% endblock %}
 
 {% block heading %}
-    REGISTRATION FORM
+    ADD ITEM
 {% endblock %}
-
 
 {% block body %}
 
-    <form method="POST" action = "{{ url_for('register') }}  ">
+    <form method="POST" action = "{{ url_for('addItem') }}  ">
 
       {{form.csrf_token}}
-      {{form.id.label}}
+      {{form.code.label}}
       <br>
-      {{form.id}}
+      {{form.code}}
       <br>
       <ul>
-      {% for error in form.id.errors %}
+      {% for error in form.code.errors %}
         <li style="color.red;">{{ error }}</li>
       {% endfor %}
       </ul>
@@ -32,47 +31,39 @@
         <li style="color.red;">{{ error }}</li>
       {% endfor %}
       </ul>
-      {{form.address.label}}
+      {{form.unit.label}}
       <br>
-      {{form.address}}
+      {{form.unit}}
       <br>
       <ul>
-          {% for error in form.address.errors %}
+          {% for error in form.unit.errors %}
               <li style="color:red;">{{ error }}</li>
           {% endfor %}
       </ul>
-      {{form.contact.label}}
+      {{form.mark_up.label}}
       <br>
-      {{form.contact}}
+      {{form.mark_up}}
       <br>
       <ul>
-          {% for error in form.contact.errors %}
+          {% for error in form.mark_up.errors %}
               <li style="color:red;">{{ error }}</li>
           {% endfor %}
       </ul>
-      {{form.username.label}}
+      {{form.selling.label}}
       <br>
-      {{form.username}}
+      {{form.selling}}
       <br>
       <ul>
-      {% for error in form.username.errors %}
+      {% for error in form.selling.errors %}
         <li style="color.red;">{{ error }}</li>
       {% endfor %}
       </ul>
-      {{form.password.label}}
+      {{form.stocks.label}}
       <br>
-      {{form.password}}
+      {{form.stocks}}
       <br>
       <ul>
-      {% for error in form.password.errors %}
-        <li style="color.red;">{{ error }}</li>
-      {% endfor %}
-      </ul>
-      {{form.cpassword.label}}
-      <br>
-      {{form.cpassword}}
-      <ul>
-      {% for error in form.cpassword.errors %}
+      {% for error in form.stocks.errors %}
         <li style="color.red;">{{ error }}</li>
       {% endfor %}
       </ul>
