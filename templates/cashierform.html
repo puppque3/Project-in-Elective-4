@@ -1,0 +1,101 @@
+{% extends "layout.html" %}
+<html>
+
+   <head>
+      <title>Cashier Form</title>
+      <h1>Cashier:</h1>
+
+   </head>
+
+   <body>
+     <form>
+ 
+       <td> ITEM NAME: <td/>
+       <td><input type="text" name="itemname"></td>
+  
+       <td>ITEM CODE:</td>
+       <td><input type="text" name="itemcode"></td>
+ 
+     <td>PRICE:</td>
+     <td><input type="text" name="price"></td>
+     <td>QTY:</td>
+     <td><input type="text" name="qty"></td>
+
+   <input type="button" name = "addbtn" value = "ADD">
+</form>
+     <hr>
+     <table>
+
+
+     </table>
+     </hr>
+     <div class = "order">
+     <input type="button" name = "voidbtn" value = "VOID">
+     <br>
+     <input type="button" name = "pricebutton" value = "PRICE CHECK">
+     <br>
+     <input type="button" name = "cancelbtn" value = "CANCEL TRANSACTION">
+     <br>
+     <input type="button" name = "pdbtn" value = "PAYMENT & DISCOUNT">
+     <br>
+     <input type="button" name = "setbtn" value = "SETTING">
+     <br>
+     <input type="button" name = "logoutbtn" value = "LOGOUT">
+     <br>
+     <br>
+     <form>
+       <tr>
+       <td> TRANSACTION NUMBER: <td/>
+       <br>
+       <td><input type="text" name="tnumber"></td>
+       </tr>
+       <br>
+       <hr>
+       <td>TOTAL:</td>
+       <br>
+       <td><input type="text" name="total"></td>
+       </tr>
+       <br>
+       <td>AMOUNT:</td>
+       <br>
+       <td><input type="text" name="amt"></td>
+       </tr>
+       <br>
+       <td>DISCOUNT:</td>
+       <br>
+       <td><input type="text" name="discount"></td>
+       </tr>
+       <br>
+       <td>VAT INCLUSIVE:</td>
+       <br>
+       <td><input type="text" name="vat"></td>
+       </tr>
+       <br>
+       <td>PAYMENT:</td>
+       <br>
+       <td><input type="text" name="payment"></td>
+       </tr>
+       <br>
+       <td>CHANGE:</td>
+       <br>
+       <td><input type="text" name="discount"></td>
+       </tr>
+
+</form>
+
+
+      </div>
+   </body>
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
