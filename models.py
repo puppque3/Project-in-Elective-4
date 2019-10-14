@@ -33,7 +33,7 @@ class Order(db.Model):
     Amount = db.Column(db.Float, nullable=False)
     Total_Amount = db.Column(db.Float, nullable=False)
     Taxable_Amount = db.Column(db.Float, nullable=False)
-    Cashier_ID = db.Column(db.String(21), db.ForeignKey('cashiers.Cashier_ID'))
+    Cashier_ID = db.Column(db.Integer, db.ForeignKey('cashiers.id'))
     Item_Code = db.Column(db.String(21), db.ForeignKey('items.Item_Code'))
 
 
@@ -48,12 +48,14 @@ class Minimum_Stock(db.Model):
 
 class Cashier(db.Model):
     __tablename__ = "cashiers"
-    Cashier_ID = db.Column(db.String(21), primary_key=True)
+    # Cashier_ID = db.Column(db.String(21), primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     Cashier_Name = db.Column(db.String(21), nullable=False)
     Address = db.Column(db.String(21), nullable=False)
     Contact_Number= db.Column(db.String(21), nullable=False)
     Username= db.Column(db.String(21), nullable=False)
     Password= db.Column(db.String(21), nullable=False)
+    access_level = db.Column(db.Integer, nullable=False)
     orders = db.relationship('Order', backref = 'cashier')
 
     def __repr__(self):

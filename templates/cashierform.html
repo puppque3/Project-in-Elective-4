@@ -1,101 +1,267 @@
 {% extends "layout.html" %}
-<html>
 
-   <head>
-      <title>Cashier Form</title>
-      <h1>Cashier:</h1>
 
-   </head>
 
-   <body>
-     <form>
- 
-       <td> ITEM NAME: <td/>
-       <td><input type="text" name="itemname"></td>
-  
-       <td>ITEM CODE:</td>
-       <td><input type="text" name="itemcode"></td>
- 
-     <td>PRICE:</td>
-     <td><input type="text" name="price"></td>
-     <td>QTY:</td>
-     <td><input type="text" name="qty"></td>
 
-   <input type="button" name = "addbtn" value = "ADD">
-</form>
+{% block body %}
+
+<script type="text/javascript">
+
+  function setItem(name, code, price) {
+    elem_name = document.getElementById("item_name");
+    elem_code = document.getElementById("item_code");
+    elem_price = document.getElementById("item_price");
+
+    elem_code.value = code;
+    elem_price.value = price;
+    elem_name.value = name;
+  }
+
+  function addItem() {
+
+  }
+
+</script>
+
+
+<div style=" margin-top: 0; margin-bottom: 1em; margin-left: 1em; padding-top: 0; display:flex; justify-content: space-between; ">
+  {% if cashier_name %}
+  {{ cashier_name }}
+  {% endif %}
+
+  <div style="display:flex; margin-right: 1em;">
+    <input style="margin-right: 1.4em;" type="button" name = "setbtn" value = "SETTING">
+    <form  action="{{ url_for('logout') }}" method="POST">
+      <input style="font-size: 14px;" type="submit" name = "logoutbtn" value = "LOGOUT">
+    </form>
+  </div>
+</div>
+
+
+    <!-- <div style="display:flex; justify-content: flex-end; margin-right: 4em; margin-bottom: 1em;">
+      <form action="{{ url_for('logout') }}" method="POST">
+          <input class="btn btn-danger" id="logoutButton" type="submit" name="logout" value="Logout">
+      </form>
+    </div> -->
+
+
+
+     <form style="display: flex; align-items: center; margin-left: 1em;" action="{{ url_for('cashier') }}" method="POST">
+
+       <button style="margin-right: 0.8em;" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl">Select Item</button>
+
+
+       <label style="margin-right: 0.4em;" for="">ITEM NAME:</label>
+       <input  id="item_name" style="width: auto !important; margin-right: 1.8em;" type="text" name="itemname">
+       <label style="margin-right: 0.4em;" for="">ITEM CODE:</label>
+
+      <input id="item_code" style="width: auto !important; margin-right: 1.8em;" type="text" name="itemcode" >
+
+
+       <label style="margin-right: 0.4em;" for="">PRICE:</label>
+
+
+        <input id="item_price"  style="width: auto !important; margin-right: 1.8em;" type="text" name="price">
+
+
+
+       <label style="margin-right: 0.4em;" for="">QTY:</label>
+       <input style="width: auto !important; margin-right: 1.8em;"  type="text"  pattern="[0-9]+" name="qty">
+       <input style="width: auto !important; margin-right: 1.8em;" type="submit" name = "addbtn" value = "ADD">
+     </form>
      <hr>
-     <table>
 
 
-     </table>
+
+
      </hr>
-     <div class = "order">
-     <input type="button" name = "voidbtn" value = "VOID">
+
+     <div style="display:flex; flex-direction: row; margin-left: 1em;">
+
+       <div style="width: 50%" class = "order">
+
+         <table class="table table-borderless table-dark">
+           <thead>
+               <tr>
+                 <th scope="col">Product Name</th>
+                 <th scope="col">Product Codet</th>
+                 <th scope="col">Quantity</th>
+                 <th scope="col">Unit Price</th>
+                 <th scope="col">Total Price</th>
+               </tr>
+             </thead>
+             <tbody>
+
+               {% if items_session %}
+                {% for i in items_session %}
+                  <tr>
+                    <th scope="row">{{ i[0] }}</th>
+                    <td>{{ i[1] }}</td>
+                    <td>{{ i[2] }}</td>
+                    <td>{{ i[3] }}</td>
+                    <td>{{ i[4] }}</td>
+                  </tr>
+
+                {% endfor %}
+               {% endif %}
+
+             </tbody>
+
+         </table>
+
+       </div>
+
+       <div style="width: 50%;">
+
+         <!-- <input type="button" name = "voidbtn" value = "VOID"> -->
+         <!-- <br> -->
+         <input type="button" name = "pricebutton" value = "PRICE CHECK">
+         <br>
+         <input type="button" name = "cancelbtn" value = "CANCEL TRANSACTION">
+         <br>
+         <input type="button" name = "pdbtn" value = "PAYMENT & DISCOUNT">
+         <br>
+
+
+         <form >
+           <tr>
+           <td> TRANSACTION NUMBER: <td/>
+           <br>
+           <td><input type="text" name="tnumber"></td>
+           </tr>
+           <br>
+           <hr>
+           <td>TOTAL:</td>
+           <br>
+           <td><input type="text" name="total"></td>
+           </tr>
+           <br>
+           <td>AMOUNT:</td>
+           <br>
+           <td><input type="text" name="amt"></td>
+           </tr>
+           <br>
+           <td>DISCOUNT:</td>
+           <br>
+           <td><input type="text" name="discount"></td>
+           </tr>
+           <br>
+           <td>VAT INCLUSIVE:</td>
+           <br>
+           <td><input type="text" name="vat"></td>
+           </tr>
+           <br>
+           <td>PAYMENT:</td>
+           <br>
+           <td><input type="text" name="payment"></td>
+           </tr>
+           <br>
+           <td>CHANGE:</td>
+           <br>
+           <td><input type="text" name="discount"></td>
+           </tr>
+
+    </form>
+       </div>
+     </div>
+
      <br>
-     <input type="button" name = "pricebutton" value = "PRICE CHECK">
      <br>
-     <input type="button" name = "cancelbtn" value = "CANCEL TRANSACTION">
-     <br>
-     <input type="button" name = "pdbtn" value = "PAYMENT & DISCOUNT">
-     <br>
-     <input type="button" name = "setbtn" value = "SETTING">
-     <br>
-     <input type="button" name = "logoutbtn" value = "LOGOUT">
-     <br>
-     <br>
-     <form>
-       <tr>
-       <td> TRANSACTION NUMBER: <td/>
-       <br>
-       <td><input type="text" name="tnumber"></td>
-       </tr>
-       <br>
-       <hr>
-       <td>TOTAL:</td>
-       <br>
-       <td><input type="text" name="total"></td>
-       </tr>
-       <br>
-       <td>AMOUNT:</td>
-       <br>
-       <td><input type="text" name="amt"></td>
-       </tr>
-       <br>
-       <td>DISCOUNT:</td>
-       <br>
-       <td><input type="text" name="discount"></td>
-       </tr>
-       <br>
-       <td>VAT INCLUSIVE:</td>
-       <br>
-       <td><input type="text" name="vat"></td>
-       </tr>
-       <br>
-       <td>PAYMENT:</td>
-       <br>
-       <td><input type="text" name="payment"></td>
-       </tr>
-       <br>
-       <td>CHANGE:</td>
-       <br>
-       <td><input type="text" name="discount"></td>
-       </tr>
-
-</form>
-
-
-      </div>
-   </body>
 
 
 
+     <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+       <div class="modal-dialog modal-xl">
+         <div class="modal-content">
+           <div class="modal-header">
+         <h5 class="modal-title" id="exampleModalLabel">Items</h5>
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+         </button>
+       </div>
+       <div class="modal-body" >
+
+       <div >
+           <h5 class="modal-title" id="exampleModalLabel" style="font-size: 2em;">Tires</h5>
+
+           <div style="display:flex; flex-wrap: wrap;">
+
+             {% if items %}
+               {% for i in items%}
+                 {% if "CT" in i.Item_Code %}
+                   <div style="width: 12%; height: 130px; margin: 1em; margin-bottom: 4.2em;  ">
+
+                     <img src="{{url_for('static', filename='tire1.jpeg')}}" style='height: 100%; width: 100%; object-fit: contain'/>
+                     <h5>{{ i.Item_Name }}</h5>
+
+
+
+                     <button class="btn btn-dark" data-dismiss="modal" type="button" name="button"  onclick="setItem('{{ i.Item_Name }}','{{ i.Item_Code }}','{{ i.Selling_Price }}');">
+                       Select</button>
+                   </div>
+                 {% endif %}
+               {% endfor %}
+             {% endif %}
+
+           </div>
+       </div>
+
+       <div >
+           <h5 class="modal-title" id="exampleModalLabel" style="font-size: 2em;">Accessories</h5>
+
+           <div style="display:flex; flex-wrap: wrap;">
+
+             {% if items %}
+               {% for i in items%}
+                 {% if "CA" in i.Item_Code %}
+                   <div style="width: 12%; height: 130px; margin: 1em; margin-bottom: 4.2em;  ">
+
+                     <img src="{{url_for('static', filename='acce1.jpg')}}" style='height: 100%; width: 100%; object-fit: contain'/>
+                     <h5>{{ i.Item_Name }}</h5>
+
+                     <button class="btn btn-dark" data-dismiss="modal" type="button" name="button"  onclick="setItem('{{ i.Item_Name }}','{{ i.Item_Code }}','{{ i.Selling_Price }}');">
+                       Select</button>
+                   </div>
+                 {% endif %}
+               {% endfor %}
+             {% endif %}
+
+           </div>
+       </div>
+
+
+       <div >
+           <h5 class="modal-title" id="exampleModalLabel" style="font-size: 2em;">Cleaners</h5>
+
+           <div style="display:flex; flex-wrap: wrap;">
+
+             {% if items %}
+               {% for i in items%}
+                 {% if "CC" in i.Item_Code %}
+                   <div style="width: 12%; height: 130px; margin: 1em; margin-bottom: 4.2em;  ">
+
+                     <img src="{{url_for('static', filename='cleaner1.png')}}" style='height: 100%; width: 100%; object-fit: contain'/>
+                     <h5>{{ i.Item_Name }}</h5>
+
+                   <button class="btn btn-dark" data-dismiss="modal" type="button" name="button"  onclick="setItem('{{ i.Item_Name }}','{{ i.Item_Code }}','{{ i.Selling_Price }}');">
+                     Select</button>
+
+                   </div>
+                 {% endif %}
+               {% endfor %}
+             {% endif %}
+
+           </div>
+       </div>
 
 
 
 
+       </div>
+         </div>
+       </div>
+     </div>
 
 
 
-
-
-</html>
+      {% endblock %}

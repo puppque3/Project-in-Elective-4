@@ -17,7 +17,7 @@
 
     }
     body{
-      background-color: lightblue;
+      background-color: lightblue !important;
       color:black;
       font-family:"Lato";
       font-size:20px;
@@ -39,7 +39,12 @@
 
 
     </style>
-      <title>Activity2</title>
+
+    {{
+      bootstrap.load_css()
+    }}
+
+    <title>Activity2</title>
   </head>
   <body>
     <h3><LEFT>{% block heading2 %}
@@ -51,6 +56,6 @@
     <CENTER>{% block body %}
     {% endblock %}</CENTER>
 
-
+  {{ bootstrap.load_js() }}
   </body>
 </html>
